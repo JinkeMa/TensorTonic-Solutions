@@ -12,10 +12,10 @@ def generate_anchors(feature_size: int, image_size: float, scales: list[float], 
     cy = cy[...,None]
     cx = cx[...,None]
     # w,h
-    scales_ = np.asarray(scales,dtype=np.float64)
-    ar = np.asarray(aspect_ratios,dtype=np.float64)
+    scales_ = np.asarray(scales,dtype=np.float64)    
     s = np.expand_dims(scales_,axis=-1)
-    w,h = s * np.sqrt(ar), s / np.sqrt(ar)
+    ar = np.sqrt(np.asarray(aspect_ratios,dtype=np.float64))
+    w,h = s * ar, s / ar
 
     # cx,cy, (st,st)
     # w,h, (sc,ar)
