@@ -5,11 +5,17 @@ def matrix_transpose(A: list) -> np.ndarray:
     Returns the transposed matrix as a NumPy array.
     """
     # Write code here
-    M,N = len(A), len(A[0])
 
-    o = np.empty((N,M),dtype=np.float64)
-    for i in range(M):
-        o[:,i] = np.array(A[i])
-
-    return o
+    X = np.asarray(A,dtype=np.float64)
+    
+    # M,N = len(A), len(A[0])
+    M,N = X.shape
+    # o = np.empty((N,M),dtype=np.float64)
+    # for i in range(M):
+    #     o[:,i] = np.array(A[i])
+    x = np.arange(M)
+    y = np.arange(N)
+    i,j = np.meshgrid(x,y,indexing='xy')    
+    
+    return X[i,j]
 
