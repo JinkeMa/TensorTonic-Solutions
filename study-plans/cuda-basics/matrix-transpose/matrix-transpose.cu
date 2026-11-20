@@ -2,11 +2,11 @@
 
 __global__ void matrix_transpose_kernel(const float* A, float* B, int M, int N) {
     // Write code here
-    int j = blockIdx.x * blockDim.x + threadIdx.x;
-    int i = blockIdx.y * blockDim.y + threadIdx.y;
-    if(i < M && j < N)
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    if(y < M && x < N)
     {
-        B[j *M +i] = A[i*N +j];
+        B[x *M +y] = A[y*N +x];
     }
 }
 
